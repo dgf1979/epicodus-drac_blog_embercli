@@ -1,0 +1,22 @@
+{{#if isEditing}}
+  {{partial 'post/edit'}}
+  <button {{action 'doneEditing'}} class="btn btn-primary">Done</button>
+{{else}}
+  <button {{action 'edit'}} class="btn btn-primary">Edit</button>
+{{/if}}
+
+<h1>{{model.title}} <small>{{format-date model.date}}</small></h1>
+
+<div class="body">
+  <p>
+    {{model.body}}
+  </p>
+</div>
+
+<div class="comments">
+  <ul>
+    {{#each comment in model.comments}}
+      <li>{{comment.text}}</li>
+    {{/each}}
+  </ul>
+</div>
