@@ -69,6 +69,7 @@ module.exports = function(app) {
   });
 
   postsRouter.post('/', function(req, res) {
+    console.log(req.body.post)
     var id = posts.length + 1;
     post = req.body.post;
     post.id = id;
@@ -80,19 +81,32 @@ module.exports = function(app) {
   postsRouter.get('/:id', function(req, res) {
     res.send({
       'post': posts.find(function(post) {
+        console.log(req.params.id)
+        console.log(post.id)
         return post.id == req.params.id
       }),
-      // 'comments': comments
+      'comments': comments
     });
   });
 
   postsRouter.put('/:id', function(req, res) {
-    console.log("called 'put' on server");
+    console.log(req.params.id)
+    // console.log(post.id)
+    console.log(req.body);
     res.send({
       'posts': {
         id: req.params.id
       }
     });
+    // postsRouter.post('/', function(req, res) {
+    //   console.log(req.body.post)
+    //   var id = posts.length + 1;
+    //   post = req.body.post;
+    //   post.id = id;
+    //   post.date = new Date();
+    //   posts.push(post);
+    //   res.status(201).end();
+    // });
   });
 
   postsRouter.delete('/:id', function(req, res) {
