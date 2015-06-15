@@ -55,6 +55,11 @@ var comments = [
 module.exports = function(app) {
   var express = require('express');
   var postsRouter = express.Router();
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.json() );
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 
   postsRouter.get('/', function(req, res) {
     res.send({
@@ -64,7 +69,11 @@ module.exports = function(app) {
   });
 
   postsRouter.post('/', function(req, res) {
-    console.log(req.params);
+    var id = posts.length + 1;
+    post = req.body.post;
+    post.id = id;
+    post.date = new Date();
+    posts.push(post);
     res.status(201).end();
   });
 

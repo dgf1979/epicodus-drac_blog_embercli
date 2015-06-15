@@ -13,6 +13,15 @@
   </p>
 </div>
 
+<div class="add-comment row">
+  <div class="well">
+    {{partial 'post/comment'}}
+    <button {{action 'addComment'}} class="btn btn-primary">Comment</button>
+  </div>
+</div>
+
+<br>
+
 <div class="comments">
   <ul>
     {{#each comment in model.comments}}
