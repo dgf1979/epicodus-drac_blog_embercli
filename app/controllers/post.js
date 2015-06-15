@@ -8,6 +8,8 @@ var PostController = {
     },
     doneEditing: function () {
       this.set('isEditing', false);
+      
+
     }
   }
 };

@@ -64,6 +64,7 @@ module.exports = function(app) {
   });
 
   postsRouter.post('/', function(req, res) {
+    console.log(req.params);
     res.status(201).end();
   });
 
@@ -77,6 +78,7 @@ module.exports = function(app) {
   });
 
   postsRouter.put('/:id', function(req, res) {
+    console.log("called 'put' on server");
     res.send({
       'posts': {
         id: req.params.id
@@ -85,6 +87,7 @@ module.exports = function(app) {
   });
 
   postsRouter.delete('/:id', function(req, res) {
+    console.log("called 'delete' on server");
     res.status(204).end();
   });
 
